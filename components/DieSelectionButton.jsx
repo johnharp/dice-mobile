@@ -16,7 +16,7 @@ function DieSelectionButton({ numSides, img, count, onPress, onClear }) {
                 </View>
             </Pressable>
             {count > 0 && (
-                <Text style={styles.text}>{count + "D" + numSides}</Text>
+                <Text style={styles.text}>{count + " D " + numSides}</Text>
             )}
 
             {count > 0 && (
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     text: {
         height: 50,
         fontSize: 32,
-        color: Colors.color4,
+        color: Colors.color1,
         fontWeight: "bold",
         textAlign: "center",
     },

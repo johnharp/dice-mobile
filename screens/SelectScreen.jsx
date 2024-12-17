@@ -1,6 +1,16 @@
 import { useState } from "react";
-import { Text, TextInput, View, StyleSheet } from "react-native";
+import {
+    Alert,
+    Text,
+    TextInput,
+    View,
+    StyleSheet,
+    StatusBar,
+    FlatList,
+} from "react-native";
 import DieSelectionButton from "../components/DieSelectionButton";
+import RollButton from "../components/RollButton";
+import ResetButton from "../components/ResetButton";
 import Colors from "../colors";
 
 function SelectScreen() {
@@ -21,7 +31,17 @@ function SelectScreen() {
         { sides: 4, count: 0 },
     ]);
 
+    const anyDiceAreSelected = dice.find((d) => d.count > 0);
+    const totalDiceSelected = dice.reduce((acc, d) => acc+= d.count, 0);
+
     const handleDieIncrement = (sides) => {
+        if (totalDiceSelected >= 10) {
+            Alert.alert("Max Dice", "Select up to 10 dice maximum.", [
+                { text: "OK", style: "destructive" },
+            ]);
+            return;
+        }
+
         setDice((currDice) => {
             const newDice = [];
             for (const die of currDice) {
@@ -41,35 +61,54 @@ function SelectScreen() {
             for (const die of currDice) {
                 let s = die.sides;
                 let c = die.count;
-                if (s == sides) c=0;
+                if (s == sides) c = 0;
 
                 newDice.push({ sides: s, count: c });
             }
             return newDice;
-        });    
+        });
+    };
+
+    const handleRoll = () => {
+        if (totalDiceSelected > 10) {
+            Alert.alert("Too Many", "Choose betwen 1 and 10 total dice to roll.", [
+                { text: "OK", style: "destructive" },
+            ]);
+        }
+    };
+
+    const handleClear = () => {
+        setDice((currDice) => {
+            const newDice = [];
+            for (const die of currDice) {
+                newDice.push({sides: die.sides, count: 0});
+            }
+            return newDice;
+        })
     }
 
     return (
         <>
+            <StatusBar />
             <View style={styles.mainView}>
-                <View style={styles.container}>
-                    {dice.map((d) => (
-                        <DieSelectionButton
-                            key={"D" + d.sides}
-                            numSides={d.sides}
-                            count={d.count}
-                            img={images[d.sides]}
-                            onPress={handleDieIncrement}
-                            onClear={handleDieClear}
-                        />
-                    ))}
-                    <TextInput
-                        style={styles.numberInput}
-                        maxLength={1}
-                        keyboardType="number-pad"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                    />
+                <View style={styles.diceContainer}>
+                    <FlatList
+                        data={dice}
+                        renderItem={(d) => (
+                            <DieSelectionButton
+                                key={"D" + d.item.sides}
+                                numSides={d.item.sides}
+                                count={d.item.count}
+                                img={images[d.item.sides]}
+                                onPress={handleDieIncrement}
+                                onClear={handleDieClear}
+                            />
+                        )}
+                    ></FlatList>
+                </View>
+                <View style={styles.rollButtonContainer}>
+                    {anyDiceAreSelected && <RollButton onPress={handleRoll} />}
+                    {anyDiceAreSelected && <ResetButton onPress={handleClear} />}
                 </View>
             </View>
         </>
@@ -78,16 +117,22 @@ function SelectScreen() {
 
 const styles = StyleSheet.create({
     mainView: {
-        backgroundColor: Colors.color3,
-        height: "100%",
-        width: "100%",
+        flex: 1,
+        alignItems: "stretch",
+        marginTop: 45,
+        marginBottom: 30,
     },
 
-    container: {
-        flex: 1,
+    diceContainer: {
         flexDirection: "column",
-        marginTop: 40,
         padding: 20,
+        flex: 9,
+    },
+
+    rollButtonContainer: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-evenly",
     },
 
     numberInput: {
