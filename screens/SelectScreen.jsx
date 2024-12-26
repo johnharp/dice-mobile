@@ -11,7 +11,7 @@ import {
 import DieSelectionButton from "../components/DieSelectionButton";
 import RollButton from "../components/RollButton";
 import ResetButton from "../components/ResetButton";
-import Colors from "../colors";
+import Colors from "../constants/Colors";
 
 function SelectScreen({ onDiceSelected }) {
     const images = new Map();

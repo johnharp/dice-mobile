@@ -4,14 +4,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, SafeAreaView } from "react-native";
 import SelectScreen from "./screens/SelectScreen";
 import RollScreen from "./screens/RollScreen";
-import Colors from "./colors";
+import Colors from "./constants/Colors";
 
 export default function App() {
     const [dice, setDice] = useState();
-    const diceSelectedHandler = function (d) {
-        console.log("called diceSelectedHandler: '" + d + "'");
-        setDice(d);
-    };
+    const diceSelectedHandler = setDice;
 
     const screen = dice ? (
         <RollScreen dice={dice} />

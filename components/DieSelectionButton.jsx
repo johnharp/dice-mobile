@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import Colors from "../colors";
+import Colors from "../constants/Colors";
 
 function DieSelectionButton({ numSides, img, count, onPress, onClear }) {
     return (

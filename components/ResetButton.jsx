@@ -1,5 +1,5 @@
 import { View, Pressable, Text, StyleSheet } from "react-native";
-import Colors from "../colors";
+import Colors from "../constants/Colors";
 
 function ResetButton({onPress}) {
     return (
