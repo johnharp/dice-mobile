@@ -13,7 +13,7 @@ import RollButton from "../components/RollButton";
 import ResetButton from "../components/ResetButton";
 import Colors from "../colors";
 
-function SelectScreen() {
+function SelectScreen({ onDiceSelected }) {
     const images = new Map();
     images[20] = require("../assets/images/D20.png");
     images[12] = require("../assets/images/D12.png");
@@ -32,7 +32,7 @@ function SelectScreen() {
     ]);
 
     const anyDiceAreSelected = dice.find((d) => d.count > 0);
-    const totalDiceSelected = dice.reduce((acc, d) => acc+= d.count, 0);
+    const totalDiceSelected = dice.reduce((acc, d) => (acc += d.count), 0);
 
     const handleDieIncrement = (sides) => {
         if (totalDiceSelected >= 10) {
@@ -71,9 +71,13 @@ function SelectScreen() {
 
     const handleRoll = () => {
         if (totalDiceSelected > 10) {
-            Alert.alert("Too Many", "Choose betwen 1 and 10 total dice to roll.", [
-                { text: "OK", style: "destructive" },
-            ]);
+            Alert.alert(
+                "Too Many",
+                "Choose betwen 1 and 10 total dice to roll.",
+                [{ text: "OK", style: "destructive" }]
+            );
+        } else {
+            onDiceSelected("aa");
         }
     };
 
@@ -81,11 +85,11 @@ function SelectScreen() {
         setDice((currDice) => {
             const newDice = [];
             for (const die of currDice) {
-                newDice.push({sides: die.sides, count: 0});
+                newDice.push({ sides: die.sides, count: 0 });
             }
             return newDice;
-        })
-    }
+        });
+    };
 
     return (
         <>
@@ -108,7 +112,9 @@ function SelectScreen() {
                 </View>
                 <View style={styles.rollButtonContainer}>
                     {anyDiceAreSelected && <RollButton onPress={handleRoll} />}
-                    {anyDiceAreSelected && <ResetButton onPress={handleClear} />}
+                    {anyDiceAreSelected && (
+                        <ResetButton onPress={handleClear} />
+                    )}
                 </View>
             </View>
         </>
