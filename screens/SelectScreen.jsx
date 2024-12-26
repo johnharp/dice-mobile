@@ -125,8 +125,6 @@ const styles = StyleSheet.create({
     mainView: {
         flex: 1,
         alignItems: "stretch",
-        marginTop: 45,
-        marginBottom: 30,
     },
 
     diceContainer: {
