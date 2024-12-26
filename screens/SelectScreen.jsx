@@ -77,7 +77,7 @@ function SelectScreen({ onDiceSelected }) {
                 [{ text: "OK", style: "destructive" }]
             );
         } else {
-            onDiceSelected("aa");
+            onDiceSelected(dice);
         }
     };
 

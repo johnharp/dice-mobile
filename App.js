@@ -14,7 +14,7 @@ export default function App() {
     };
 
     const screen = dice ? (
-        <RollScreen />
+        <RollScreen dice={dice} />
     ) : (
         <SelectScreen onDiceSelected={diceSelectedHandler} />
     );
