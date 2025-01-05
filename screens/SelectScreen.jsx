@@ -13,14 +13,16 @@ import RollButton from "../components/RollButton";
 import ResetButton from "../components/ResetButton";
 import Colors from "../constants/Colors";
 
+const images = new Map();
+images[20] = require("../assets/images/D20-sm.png");
+images[12] = require("../assets/images/D12-sm.png");
+images[10] = require("../assets/images/D10-sm.png");
+images[8] = require("../assets/images/D8-sm.png");
+images[6] = require("../assets/images/D6-sm.png");
+images[4] = require("../assets/images/D4-sm.png");
+
 function SelectScreen({ onDiceSelected }) {
-    const images = new Map();
-    images[20] = require("../assets/images/D20.png");
-    images[12] = require("../assets/images/D12.png");
-    images[10] = require("../assets/images/D10.png");
-    images[8] = require("../assets/images/D8.png");
-    images[6] = require("../assets/images/D6.png");
-    images[4] = require("../assets/images/D4.png");
+
 
     const [dice, setDice] = useState([
         { sides: 20, count: 0 },
@@ -35,8 +37,8 @@ function SelectScreen({ onDiceSelected }) {
     const totalDiceSelected = dice.reduce((acc, d) => (acc += d.count), 0);
 
     const handleDieIncrement = (sides) => {
-        if (totalDiceSelected >= 10) {
-            Alert.alert("Max Dice", "Select up to 10 dice maximum.", [
+        if (totalDiceSelected >= 5) {
+            Alert.alert("Max Dice", "Select up to 5 dice maximum.", [
                 { text: "OK", style: "destructive" },
             ]);
             return;

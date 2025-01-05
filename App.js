@@ -9,9 +9,10 @@ import Colors from "./constants/Colors";
 export default function App() {
     const [dice, setDice] = useState();
     const diceSelectedHandler = setDice;
+    const rollAgainHandler = () => setDice();
 
     const screen = dice ? (
-        <RollScreen dice={dice} />
+        <RollScreen dice={dice} onRollAgain={rollAgainHandler} />
     ) : (
         <SelectScreen onDiceSelected={diceSelectedHandler} />
     );
