@@ -1,3 +1,10 @@
+![D4](images/D4-sm.png "D4 die render")
+![D6](images/D6-sm.png "D6 die render")
+![D8](images/D8-sm.png "D8 die render")
+![D10](images/D10-sm.png "D10 die render")
+![D12](images/D12-sm.png "D12 die render")
+![D20](images/D20-sm.png "D20 die render")
+
 After having developed a fair amount of React both at work and in home projects
 and I wanted to try out React Native.
 
@@ -6,7 +13,8 @@ React Native course would be high-quality as well: [React Native: The Practical 
 
 One technique I like to use when learning from a class is to make up my own
 sample project that is different than the class project and apply each concept
-learned.  This dice rolling app is my alternate project.
+learned.  This dice rolling app is my alternate project for Section 4 of the course.
+Instead of a number-guessing game I developed this die roller app instead.
 
 It is structured as two main screens (each developed as a fullscreen
 React component):
