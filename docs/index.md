@@ -1,9 +1,9 @@
-![D4](images/D4-sm.png "D4 die render")
-![D6](images/D6-sm.png "D6 die render")
-![D8](images/D8-sm.png "D8 die render")
-![D10](images/D10-sm.png "D10 die render")
-![D12](images/D12-sm.png "D12 die render")
-![D20](images/D20-sm.png "D20 die render")
+![D4](assets/D4-sm.png "D4 die render")
+![D6](assets/D6-sm.png "D6 die render")
+![D8](assets/D8-sm.png "D8 die render")
+![D10](assets/D10-sm.png "D10 die render")
+![D12](assets/D12-sm.png "D12 die render")
+![D20](assets/D20-sm.png "D20 die render")
 
 After having developed a fair amount of React both at work and in home projects
 and I wanted to try out React Native.
@@ -32,3 +32,10 @@ basics:
 * Differences between React and React Native
 * And some Blender 3D modeling knowledge:
   - how to do UV unwrapping for the dice models
+
+The Blender file for the die graphics is available here:
+[dice.blend](assets/dice.blend)
+
+The UV map used to apply the numbers on the die sides is:
+[Number-Texture2.png](assets/Number-Texture2.png)
+
