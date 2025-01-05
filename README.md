@@ -1,4 +1,4 @@
-This is a simple React Mobile app that allows the user to select one or more
+This is a simple React Native app that allows the user to select one or more
 of each of the main polyhedral dice types and then "rolls" a random number for
 each.  The results of each die are displayed along with the sum of all the rolls.
 
