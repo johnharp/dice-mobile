@@ -1,5 +1,3 @@
-# Dice Mobile
-
 This project was my first introduction to React Native.
 From it I learned the following basics:
 
