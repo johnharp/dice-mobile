@@ -33,6 +33,9 @@ basics:
 * And some Blender 3D modeling knowledge:
   - how to do UV unwrapping for the dice models
 
+The code for the project is available here:
+[github.com/johnharp/dice-mobile](https://github.com/johnharp/dice-mobile)
+
 The Blender file for the die graphics is available here:
 [dice.blend](assets/dice.blend)
 
